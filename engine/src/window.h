@@ -1,5 +1,8 @@
 #pragma once
 
+#include <cstdint>
+
+#include "color.h"
 #include "vector2.h"
 
 #include <SDL2/SDL.h>
@@ -12,6 +15,7 @@ namespace uge {
         ~window();
 
         void start();
+        void stop();
 
         inline const char* get_title() const { return _title; }
         inline vector2 get_size() const { return _size; }
@@ -32,8 +36,19 @@ namespace uge {
 
         virtual void on_event(SDL_Event& event) {}
     protected:
+        // manually set render draw color
+        void set_render_color(color color);
+        // draw a rectangle
+        void draw_rect(vector2 pos, vector2 size, color color);
+    protected:
         SDL_Window* _sdl_window;
         SDL_Renderer* _sdl_renderer;
+
+        // black (default)
+        color _clear_color;
+        // 0 = unlimited (default)
+        // <15 = not recommended
+        uint8_t _fps_limit = 0;
     private:
         void init();
         void ready();

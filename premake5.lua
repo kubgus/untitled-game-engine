@@ -5,11 +5,6 @@ workspace "untitled-game-engine"
     configurations { "debug", "release" }
     startproject "sandbox"
 
-    libdirs
-    {
-        "vendor/SDL2/build"
-    }
-
     group ""
         include "engine"
         include "sandbox"

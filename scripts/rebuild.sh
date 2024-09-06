@@ -1,12 +1,9 @@
-echo "cleaning bin/obj files"
-rm -rf bin
-rm -rf obj
+echo "[cleaning bin/obj files...]"
+rm -rf ${PWD}/bin
+rm -rf ${PWD}/obj
+rm -rf ${PWD}/.cache
 
-echo "cleaning make files"
+echo "[cleaning make files...]"
 make clean
 
-echo "running premake5"
-premake5 gmake2
-
-echo "running make with bear"
-bear -- make
+sh ${PWD}/scripts/build.sh

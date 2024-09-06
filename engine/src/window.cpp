@@ -14,11 +14,6 @@ namespace uge {
     }
 
     window::~window() {
-        DEBUG_LOG("Destroying window \"" << _title << "\"");
-
-        SDL_DestroyRenderer(_sdl_renderer);
-        SDL_DestroyWindow(_sdl_window);
-        SDL_Quit();
     }
 
     void window::start() {
@@ -53,11 +48,11 @@ namespace uge {
             return;
         }
 
-        SDL_SetRenderDrawColor(_sdl_renderer, 0, 0, 0, 255);
-
         ready();
 
         while (_running) {
+            auto start_time = SDL_GetTicks();
+
             frame();
 
             SDL_Event e;
@@ -65,16 +60,41 @@ namespace uge {
                 event(e);
             }
 
-            draw();
+            set_render_color(_clear_color);
 
             SDL_RenderClear(_sdl_renderer);
+
+            draw();
 
             SDL_RenderPresent(_sdl_renderer);
 
             update();
+
+            if (_fps_limit != 0 && SDL_GetTicks() - start_time < 1000 / _fps_limit)
+                SDL_Delay((1000 / _fps_limit) - (SDL_GetTicks() - start_time));
         }
 
         quit();
+    }
+
+    void window::stop() {
+        _running = false;
+    }
+
+    void window::set_render_color(color color) {
+        SDL_SetRenderDrawColor(
+                _sdl_renderer,
+                color.r,
+                color.g,
+                color.b,
+                color.a
+        );
+    }
+
+    void window::draw_rect(vector2 pos, vector2 size, color color) {
+        set_render_color(color);
+        SDL_Rect rect = { (int)pos.x, (int)pos.y, (int)size.x, (int)size.y };
+        SDL_RenderFillRect(_sdl_renderer, &rect);
     }
 
     void window::init() {
@@ -98,6 +118,10 @@ namespace uge {
     }
 
     void window::quit() {
+        SDL_DestroyRenderer(_sdl_renderer);
+        SDL_DestroyWindow(_sdl_window);
+        SDL_Quit();
+
         on_quit();
     }
 
