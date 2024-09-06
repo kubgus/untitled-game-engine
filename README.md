@@ -1,3 +1,5 @@
+<img align="right" width="64" src="https://github.com/user-attachments/assets/43fc072c-1047-4185-aa86-518ed36ef751" alt="">
+
 # Untitled Game Engine
 
 Untitled Game Engine (UGE) is a simple C++ library for making SDL2 games.
