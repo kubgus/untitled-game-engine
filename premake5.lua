@@ -1,10 +1,15 @@
 outdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 workspace "untitled-game-engine"
-    configurations { "debug", "release" }
     architecture "x86_64"
+    configurations { "debug", "release" }
     startproject "sandbox"
 
-    include "engine"
-    include "sandbox"
+    libdirs
+    {
+        "vendor/SDL2/build"
+    }
 
+    group ""
+        include "engine"
+        include "sandbox"

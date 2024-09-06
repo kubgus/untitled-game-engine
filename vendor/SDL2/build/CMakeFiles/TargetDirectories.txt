@@ -1,0 +1,12 @@
+/home/kubgus/dev/kubgus/untitled-game-engine/vendor/sdl2/build/CMakeFiles/sdl_headers_copy.dir
+/home/kubgus/dev/kubgus/untitled-game-engine/vendor/sdl2/build/CMakeFiles/SDL2main.dir
+/home/kubgus/dev/kubgus/untitled-game-engine/vendor/sdl2/build/CMakeFiles/SDL2.dir
+/home/kubgus/dev/kubgus/untitled-game-engine/vendor/sdl2/build/CMakeFiles/SDL2-static.dir
+/home/kubgus/dev/kubgus/untitled-game-engine/vendor/sdl2/build/CMakeFiles/SDL2_test.dir
+/home/kubgus/dev/kubgus/untitled-game-engine/vendor/sdl2/build/CMakeFiles/uninstall.dir
+/home/kubgus/dev/kubgus/untitled-game-engine/vendor/sdl2/build/CMakeFiles/edit_cache.dir
+/home/kubgus/dev/kubgus/untitled-game-engine/vendor/sdl2/build/CMakeFiles/rebuild_cache.dir
+/home/kubgus/dev/kubgus/untitled-game-engine/vendor/sdl2/build/CMakeFiles/list_install_components.dir
+/home/kubgus/dev/kubgus/untitled-game-engine/vendor/sdl2/build/CMakeFiles/install.dir
+/home/kubgus/dev/kubgus/untitled-game-engine/vendor/sdl2/build/CMakeFiles/install/local.dir
+/home/kubgus/dev/kubgus/untitled-game-engine/vendor/sdl2/build/CMakeFiles/install/strip.dir

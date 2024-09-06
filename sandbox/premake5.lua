@@ -1,9 +1,8 @@
 project "sandbox"
-    location "%{wks.location}/%{prj.name}"
     kind "ConsoleApp"
     language "C++"
     cppdialect "C++17"
-    staticruntime "off"
+    location "%{wks.location}/%{prj.name}"
 
     targetdir ("%{wks.location}/bin/" .. outdir .. "/%{prj.name}")
     objdir ("%{wks.location}/obj/" .. outdir .. "/%{prj.name}")
@@ -17,11 +16,13 @@ project "sandbox"
     includedirs
     {
         "src",
+        "%{wks.location}/vendor/SDL2/include",
         "%{wks.location}/engine/src"
     }
 
     links
     {
+        "SDL2",
         "engine"
     }
 

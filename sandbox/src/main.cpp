@@ -1,9 +1,13 @@
-#include <uge.h>
+#include "uge.h"
+
+class app : public uge::window {
+public:
+    app() : uge::window("app", { 800, 600 }) {}
+protected:
+};
 
 int main()
 {
-    uge::vector2 a = { 1, 2 };
-    uge::vector2 b = { 3, 4 };
-
-    return 0;
+    app app;
+    app.start();
 }
