@@ -57,17 +57,36 @@ Run executable from `bin/`.
 ```cpp
 #include "uge.h"
 
+#include <SDL2/SDL.h>
+
+struct roadrunner {
+    uge::vector2 pos;
+    int speed = 3;
+};
+
 class app : public uge::window {
 public:
-    app() : uge::window("app", window_size) {}
+    app() : uge::window("app", { 800, 600 }) {}
+
+    roadrunner steve = { 20, 10 };
 protected:
     void on_ready() override {
-        _clear_color = { 255, 255, 0 };
+        _clear_color = { 0x11, 0x11, 0x11, 0xFF };
         _fps_limit = 30;
     }
 
     void on_draw() override {
-        draw_rect({ 0, 0 }, { 20, 20 }, { 255, 0, 0 });
+        draw_rect(steve.pos, { 20, 20 }, { 255, 0, 255 });
+    }
+
+    void on_update() override {
+        steve.pos.x += steve.speed;
+    }
+
+    void on_event(SDL_Event& event) override {
+        if (event.key.keysym.sym == SDLK_ESCAPE) {
+            stop();
+        }
     }
 };
 
