@@ -1,5 +1,8 @@
 #include "window.h"
+
+#include "input.h"
 #include "log.h"
+#include "vector2.h"
 
 #include <SDL2/SDL.h>
 
@@ -128,6 +131,16 @@ namespace uge {
     void window::event(SDL_Event& e) {
         if (e.type == SDL_QUIT) {
             _running = false;
+        } else if (e.type == SDL_KEYDOWN) {
+            _input_keys.insert(keymap(e.key.keysym.sym));
+        } else if (e.type == SDL_KEYUP) {
+            _input_keys.erase(keymap(e.key.keysym.sym));
+        } else if (e.type == SDL_MOUSEBUTTONDOWN) {
+            _input_mouse_buttons.insert(mousemap(e.button.button));
+        } else if (e.type == SDL_MOUSEBUTTONUP) {
+            _input_mouse_buttons.erase(mousemap(e.button.button));
+        } else if (e.type == SDL_MOUSEMOTION) {
+            _input_mouse_position = vector2 { (uint8_t)e.motion.x, (uint8_t)e.motion.y };
         }
 
         on_event(e);

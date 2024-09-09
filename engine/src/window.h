@@ -3,6 +3,7 @@
 #include <cstdint>
 
 #include "color.h"
+#include "input.h"
 #include "vector2.h"
 
 #include <SDL2/SDL.h>
@@ -49,6 +50,15 @@ namespace uge {
         // 0 = unlimited (default)
         // <15 = not recommended
         uint8_t _fps_limit = 0;
+    protected:
+        input _input = {
+            _input_keys,
+            _input_mouse_buttons
+        };
+    private:
+        std::unordered_set<keycode> _input_keys;
+        std::unordered_set<mouse> _input_mouse_buttons;
+        vector2 _input_mouse_position;
     private:
         void init();
         void ready();

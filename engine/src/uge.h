@@ -5,6 +5,8 @@
 
 #include "color.h"
 
+#include "input.h"
+
 #include "log.h"
 
 #include "vector2.h"
